@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
+  "rules": {
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["function-declaration", "arrow-function"]
+      }
+    ],
+    "semi": 0,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "quotes": [
+      2,
+      "double",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0
+  }
+}

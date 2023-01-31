@@ -1,0 +1,4 @@
+*tests/
+*build/
+*coverage/
+*node_modules/

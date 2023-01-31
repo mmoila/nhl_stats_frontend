@@ -1,0 +1,164 @@
+{
+  "teams": [
+    {
+      "abbreviation": "NJD",
+      "city": "New Jersey",
+      "name": "Devils"
+    },
+    {
+      "abbreviation": "NYI",
+      "city": "New York",
+      "name": "Islanders"
+    },
+    {
+      "abbreviation": "NYR",
+      "city": "New York",
+      "name": "Rangers"
+    },
+    {
+      "abbreviation": "PHI",
+      "city": "Philadelphia",
+      "name": "Flyers"
+    },
+    {
+      "abbreviation": "PIT",
+      "city": "Pittsburgh",
+      "name": "Penguins"
+    },
+    {
+      "abbreviation": "BOS",
+      "city": "Boston",
+      "name": "Bruins"
+    },
+    {
+      "abbreviation": "BUF",
+      "city": "Buffalo",
+      "name": "Sabres"
+    },
+    {
+      "abbreviation": "MTL",
+      "city": "Montréal",
+      "name": "Canadiens"
+    },
+    {
+      "abbreviation": "OTT",
+      "city": "Ottawa",
+      "name": "Senators"
+    },
+    {
+      "abbreviation": "TOR",
+      "city": "Toronto",
+      "name": "Maple Leafs"
+    },
+    {
+      "abbreviation": "CAR",
+      "city": "Carolina",
+      "name": "Hurricanes"
+    },
+    {
+      "abbreviation": "FLA",
+      "city": "Florida",
+      "name": "Panthers"
+    },
+    {
+      "abbreviation": "TBL",
+      "city": "Tampa Bay",
+      "name": "Lightning"
+    },
+    {
+      "abbreviation": "WSH",
+      "city": "Washington",
+      "name": "Capitals"
+    },
+    {
+      "abbreviation": "CHI",
+      "city": "Chicago",
+      "name": "Blackhawks"
+    },
+    {
+      "abbreviation": "DET",
+      "city": "Detroit",
+      "name": "Red Wings"
+    },
+    {
+      "abbreviation": "NSH",
+      "city": "Nashville",
+      "name": "Predators"
+    },
+    {
+      "abbreviation": "STL",
+      "city": "St. Louis",
+      "name": "Blues"
+    },
+    {
+      "abbreviation": "CGY",
+      "city": "Calgary",
+      "name": "Flames"
+    },
+    {
+      "abbreviation": "COL",
+      "city": "Colorado",
+      "name": "Avalanche"
+    },
+    {
+      "abbreviation": "EDM",
+      "city": "Edmonton",
+      "name": "Oilers"
+    },
+    {
+      "abbreviation": "VAN",
+      "city": "Vancouver",
+      "name": "Canucks"
+    },
+    {
+      "abbreviation": "ANA",
+      "city": "Anaheim",
+      "name": "Ducks"
+    },
+    {
+      "abbreviation": "DAL",
+      "city": "Dallas",
+      "name": "Stars"
+    },
+    {
+      "abbreviation": "LAK",
+      "city": "Los Angeles",
+      "name": "Kings"
+    },
+    {
+      "abbreviation": "SJS",
+      "city": "San Jose",
+      "name": "Sharks"
+    },
+    {
+      "abbreviation": "CBJ",
+      "city": "Columbus",
+      "name": "Blue Jackets"
+    },
+    {
+      "abbreviation": "MIN",
+      "city": "Minnesota",
+      "name": "Wild"
+    },
+    {
+      "abbreviation": "WPG",
+      "city": "Winnipeg",
+      "name": "Jets"
+    },
+    {
+      "abbreviation": "ARI",
+      "city": "Arizona",
+      "name": "Coyotes"
+    },
+    {
+      "abbreviation": "VGK",
+      "city": "Vegas",
+      "name": "Golden Knights"
+    },
+    {
+      "abbreviation": "SEA",
+      "city": "Seattle",
+      "name": "Kraken"
+    }
+  ]
+}

@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "@mui/material"
+import NavBar from "./components/NavBar"
+import TeamTable from "./components/TeamTable"
+import data from "./data.json"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container
+      disableGutters
+      className="App"
+      maxWidth={false}
+      sx={{ background: "green" }}
+    >
+      <NavBar />
+      <Container sx={{ background: "blue", overflow: "auto", my: 5 }}>
+        <TeamTable teams={data.teams} />
+        <TeamTable />
+      </Container>
+    </Container>
+  )
 }
 
-export default App;
+export default App
