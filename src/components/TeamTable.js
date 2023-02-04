@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
-import { Typography, TableSortLabel } from "@mui/material"
+import { Typography, TableSortLabel, Container } from "@mui/material"
 import { useState } from "react"
 
 export default function TeamTable({ teams }) {
@@ -68,8 +68,22 @@ export default function TeamTable({ teams }) {
             .sort(getComparator(order, orderBy))
             .map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.abbreviation}
+                <TableCell>
+                  <Container
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <img
+                      src={`https://assets.nhle.com/logos/nhl/svg/${row.abbreviation}_light.svg`}
+                      width="50px"
+                      height="auto"
+                      alt="logo"
+                    />
+                    {row.abbreviation}
+                  </Container>
                 </TableCell>
                 <TableCell>{row.city}</TableCell>
                 <TableCell>{row.name}</TableCell>
