@@ -5,14 +5,9 @@ import data from "./data.json"
 
 function App() {
   return (
-    <Container
-      disableGutters
-      className="App"
-      maxWidth={false}
-      sx={{ background: "green" }}
-    >
+    <Container disableGutters className="App" maxWidth={false}>
       <NavBar />
-      <Container sx={{ background: "blue", overflow: "auto", my: 5 }}>
+      <Container sx={{ overflow: "auto", my: 5 }}>
         <TeamTable teams={data.teams} />
         <TeamTable />
       </Container>

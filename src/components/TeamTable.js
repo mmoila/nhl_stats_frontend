@@ -16,36 +16,38 @@ export default function TeamTable({ teams }) {
   if (!teams) {
     return null
   }
-  /*
-  function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
+
+  function descendingComparator(a, b, orderingBy) {
+    if (b[orderingBy] < a[orderingBy]) {
       return -1
     }
-    if (b[orderBy] > a[orderBy]) {
+    if (b[orderingBy] > a[orderingBy]) {
       return 1
     }
     return 0
   }
 
-  function getComparator(order, orderBy) {
-    return order === "desc"
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy)
+  function getComparator(criteria, orderingBy) {
+    return criteria === "desc"
+      ? (a, b) => descendingComparator(a, b, orderingBy)
+      : (a, b) => -descendingComparator(a, b, orderingBy)
   }
-*/
+
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === "asc"
     setOrder(isAsc ? "desc" : "asc")
     setOrderBy(property)
-    console.log(orderBy)
   }
 
   return (
-    <TableContainer component={Paper} sx={{ my: 5 }}>
+    <TableContainer
+      component={Paper}
+      sx={{ my: 5, maxWidth: "sm", mx: "auto" }}
+    >
       <Typography p={2} variant="h6" id="tableTitle" component="div">
         Teams
       </Typography>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ maxWidth: 800 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>
@@ -53,7 +55,7 @@ export default function TeamTable({ teams }) {
               <TableSortLabel
                 active
                 direction={order}
-                onClick={() => handleRequestSort("Abbreviation")}
+                onClick={() => handleRequestSort("abbreviation")}
               />
             </TableCell>
             <TableCell>City</TableCell>
@@ -61,15 +63,18 @@ export default function TeamTable({ teams }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {teams.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.abbreviation}
-              </TableCell>
-              <TableCell>{row.city}</TableCell>
-              <TableCell>{row.name}</TableCell>
-            </TableRow>
-          ))}
+          {teams
+            .slice()
+            .sort(getComparator(order, orderBy))
+            .map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.abbreviation}
+                </TableCell>
+                <TableCell>{row.city}</TableCell>
+                <TableCell>{row.name}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>
