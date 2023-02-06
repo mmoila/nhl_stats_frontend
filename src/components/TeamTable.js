@@ -11,7 +11,7 @@ import { useState } from "react"
 
 export default function TeamTable({ teams }) {
   const [order, setOrder] = useState("asc")
-  const [orderBy, setOrderBy] = useState("Abbreviation")
+  const [orderBy, setOrderBy] = useState("abbreviation")
 
   if (!teams) {
     return null
@@ -47,19 +47,33 @@ export default function TeamTable({ teams }) {
       <Typography p={2} variant="h6" id="tableTitle" component="div">
         Teams
       </Typography>
-      <Table sx={{ maxWidth: 800 }} aria-label="simple table">
+      <Table sx={{ maxWidth: "sm" }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>
               Abbreviation
               <TableSortLabel
-                active
+                active={orderBy === "abbreviation"}
                 direction={order}
                 onClick={() => handleRequestSort("abbreviation")}
               />
             </TableCell>
-            <TableCell>City</TableCell>
-            <TableCell>Name</TableCell>
+            <TableCell>
+              City
+              <TableSortLabel
+                active={orderBy === "city"}
+                direction={order}
+                onClick={() => handleRequestSort("city")}
+              />
+            </TableCell>
+            <TableCell>
+              Name
+              <TableSortLabel
+                active={orderBy === "name"}
+                direction={order}
+                onClick={() => handleRequestSort("name")}
+              />
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,12 +82,12 @@ export default function TeamTable({ teams }) {
             .sort(getComparator(order, orderBy))
             .map((row) => (
               <TableRow key={row.name}>
-                <TableCell>
+                <TableCell size="small" sx={{ paddingLeft: 0 }}>
                   <Container
+                    maxWidth="xs"
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "space-between",
                     }}
                   >
                     <img
