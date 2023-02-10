@@ -6,7 +6,7 @@ import PlayerStatsTable from "./PlayerStatsTable"
 import { playerStats, teamStats } from "../data"
 
 const FrontPage = () => (
-  <Grid container spacing={2}>
+  <Grid disableEqualOverflow container spacing={2}>
     <Grid item xs={8}>
       <Paper
         sx={{
