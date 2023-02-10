@@ -1,18 +1,29 @@
 import Grid from "@mui/material/Unstable_Grid2"
-import { Stack } from "@mui/material"
+import { Paper, Stack } from "@mui/material"
 
-import TeamTable from "./TeamTable"
-import StatsTable from "./StatsTable"
+import TeamStatsTable from "./TeamStatsTable"
+import PlayerStatsTable from "./PlayerStatsTable"
+import { playerStats, teamStats } from "../data"
 
-const FrontPage = ({ teams }) => (
+const FrontPage = () => (
   <Grid container spacing={2}>
     <Grid item xs={8}>
-      <TeamTable teams={teams} />
+      <Paper
+        sx={{
+          height: 500,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "lightGrey",
+        }}
+      >
+        live results here...
+      </Paper>
     </Grid>
     <Grid item xs={4}>
       <Stack spacing={1}>
-        <StatsTable header="Team standings" teams={teams} />
-        <StatsTable header="Team standings" teams={teams} />
+        <TeamStatsTable header="Team standings" teams={teamStats} />
+        <PlayerStatsTable header="Player standings" players={playerStats} />
       </Stack>
     </Grid>
   </Grid>

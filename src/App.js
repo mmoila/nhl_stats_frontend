@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom"
 import FrontPage from "./components/FrontPage"
 import NavBar from "./components/NavBar"
 import TeamTable from "./components/TeamTable"
-import data from "./data.json"
 
 function App() {
   return (
@@ -11,8 +10,8 @@ function App() {
       <NavBar />
       <Container sx={{ overflow: "auto", my: 5 }}>
         <Routes>
-          <Route path="/" element={<FrontPage teams={data.teams} />} />
-          <Route path="/teams" element={<TeamTable teams={data.teams} />} />
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/teams" element={<TeamTable />} />
         </Routes>
       </Container>
     </Container>

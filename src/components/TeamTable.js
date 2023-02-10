@@ -8,8 +8,9 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { Typography, TableSortLabel, Container } from "@mui/material"
 import { useState } from "react"
+import { teams } from "../data"
 
-export default function TeamTable({ teams }) {
+export default function TeamTable() {
   const [order, setOrder] = useState("asc")
   const [orderBy, setOrderBy] = useState("abbreviation")
 
