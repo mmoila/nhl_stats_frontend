@@ -7,7 +7,7 @@ import { playerStats, teamStats } from "../data"
 
 const FrontPage = () => (
   <Grid disableEqualOverflow container spacing={2}>
-    <Grid item xs={8}>
+    <Grid item xs={12} md={8}>
       <Paper
         sx={{
           height: 500,
@@ -20,11 +20,17 @@ const FrontPage = () => (
         live results here...
       </Paper>
     </Grid>
-    <Grid item xs={4}>
+    <Grid item md={4} sx={{ display: { xs: "none", md: "block" } }}>
       <Stack spacing={1}>
         <TeamStatsTable header="Team standings" teams={teamStats} />
         <PlayerStatsTable header="Player standings" players={playerStats} />
       </Stack>
+    </Grid>
+    <Grid item xs={6} sx={{ display: { md: "none" } }}>
+      <TeamStatsTable header="Team standings" teams={teamStats} />
+    </Grid>
+    <Grid item xs={6} sx={{ display: { md: "none" } }}>
+      <PlayerStatsTable header="Player standings" players={playerStats} />
     </Grid>
   </Grid>
 )
