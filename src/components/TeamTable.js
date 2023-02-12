@@ -8,11 +8,16 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { Typography, TableSortLabel, Container } from "@mui/material"
 import { useState } from "react"
-import { teams } from "../data"
+import { useQuery } from "react-query"
+import { getTeams } from "../utils/requests"
+import { createTeamList } from "../utils/helpers"
 
 export default function TeamTable() {
   const [order, setOrder] = useState("asc")
   const [orderBy, setOrderBy] = useState("abbreviation")
+
+  const teamData = useQuery("teamData", getTeams)
+  const teams = teamData.isLoading ? null : createTeamList(teamData.data)
 
   if (!teams) {
     return null
