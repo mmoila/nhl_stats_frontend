@@ -1,6 +1,7 @@
 {
   "name": "nhl_stats_frontend",
   "version": "0.1.0",
+  "homepage": "https://mmoila.github.io/nhl_stats_frontend",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
