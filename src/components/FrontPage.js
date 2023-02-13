@@ -18,6 +18,10 @@ const FrontPage = () => {
     ? null
     : createPlayerRecordList(playerStandigsData.data)
 
+  if (!teamStats || !playerStats) {
+    return null
+  }
+
   return (
     <Grid disableEqualOverflow container spacing={2}>
       <Grid item xs={12} md={8}>

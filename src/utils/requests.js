@@ -15,10 +15,14 @@ export const getTeamStandings = () =>
     .then((res) => res.data)
     .catch((error) => error)
 
-export const getPlayerStandings = () =>
-  axios
-    .get(
-      `player-stats/rest/en/leaders/skaters/points?cayenneExp=season=${season}`
-    )
+export const getPlayerStandings = () => {
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `player-stats/rest/en/leaders/skaters/points?cayenneExp=season=${season}`
+      : `https://cekvpxev6a.execute-api.eu-north-1.amazonaws.com/player-stats`
+
+  return axios
+    .get(url)
     .then((res) => res.data.data)
     .catch((error) => error)
+}
