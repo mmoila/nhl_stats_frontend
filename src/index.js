@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import CssBaseline from "@mui/material/CssBaseline"
-import { HashRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
 import { ThemeProvider } from "@mui/material/styles"
 import { QueryClient, QueryClientProvider } from "react-query"
 import App from "./App"
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <CssBaseline>
-      <Router basename="/">
+      <Router basename="/nhl_stats_frontend">
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <App />

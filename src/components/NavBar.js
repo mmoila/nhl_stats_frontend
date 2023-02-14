@@ -12,7 +12,7 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            href="/"
+            href="/nhl_stats_frontend"
             size="large"
             edge="start"
             color="inherit"
@@ -22,7 +22,7 @@ export default function NavBar() {
             <HomeIcon />
           </IconButton>
           <Box component="div" sx={{ flexGrow: 1 }}>
-            <Button href="/teams" color="inherit">
+            <Button href="/nhl_stats_frontend/teams" color="inherit">
               Teams
             </Button>
           </Box>
