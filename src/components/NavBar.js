@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link as RouterLink } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Toolbar from "@mui/material/Toolbar"
@@ -12,7 +13,8 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            href="/nhl_stats_frontend"
+            component={RouterLink}
+            to="/"
             size="large"
             edge="start"
             color="inherit"
@@ -22,7 +24,7 @@ export default function NavBar() {
             <HomeIcon />
           </IconButton>
           <Box component="div" sx={{ flexGrow: 1 }}>
-            <Button href="/nhl_stats_frontend/teams" color="inherit">
+            <Button component={RouterLink} to="/teams" color="inherit">
               Teams
             </Button>
           </Box>

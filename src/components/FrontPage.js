@@ -9,6 +9,7 @@ import { getPlayerStandings, getTeamStandings } from "../utils/requests"
 const FrontPage = () => {
   const teamStandingsData = useQuery("teamStandingsData", getTeamStandings)
   const playerStandigsData = useQuery("playerStandingsData", getPlayerStandings)
+  console.log(playerStandigsData)
 
   const teamStats = teamStandingsData.isLoading
     ? null

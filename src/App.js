@@ -10,8 +10,8 @@ function App() {
       <NavBar />
       <Container sx={{ overflow: "auto", my: 5 }}>
         <Routes>
-          <Route exact path="/" element={<FrontPage />} />
-          <Route exact path="/teams" element={<TeamTable />} />
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/teams" element={<TeamTable />} />
         </Routes>
       </Container>
     </Container>
