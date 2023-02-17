@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/nhl_stats_frontend/static/js/main.f3ce5241.js",
+    "main.js": "/nhl_stats_frontend/static/js/main.898081a3.js",
     "index.html": "/nhl_stats_frontend/index.html",
-    "main.f3ce5241.js.map": "/nhl_stats_frontend/static/js/main.f3ce5241.js.map"
+    "main.898081a3.js.map": "/nhl_stats_frontend/static/js/main.898081a3.js.map"
   },
   "entrypoints": [
-    "static/js/main.f3ce5241.js"
+    "static/js/main.898081a3.js"
   ]
 }
