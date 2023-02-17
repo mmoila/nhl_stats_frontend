@@ -1,4 +1,10 @@
-import { Stack, Typography, Container } from "@mui/material"
+import {
+  Stack,
+  Typography,
+  Container,
+  Box,
+  CircularProgress,
+} from "@mui/material"
 import { useQuery } from "react-query"
 import GameResultContainer from "./GameResultContainer"
 import { getGameResults } from "../utils/requests"
@@ -8,7 +14,11 @@ const GameResultStack = () => {
   const result = useQuery("gameResults", getGameResults)
 
   if (result.isLoading) {
-    return <div>Loading...</div>
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    )
   }
   if (result.isError) {
     return <div>Error occurred</div>
@@ -30,25 +40,16 @@ const GameResultStack = () => {
       >
         Game Results From Yesterday
       </Typography>
-      <Stack direction="row" sx={{ justifyContent: "center" }} p={4}>
-        <Stack spacing={4}>
-          {gameResult.map((res) => (
-            <GameResultContainer
-              key={res.home}
-              team={res.home}
-              score={res.homeScore}
-            />
-          ))}
-        </Stack>
-        <Stack spacing={4}>
-          {gameResult.map((res) => (
-            <GameResultContainer
-              key={res.away}
-              team={res.away}
-              score={res.awayScore}
-            />
-          ))}
-        </Stack>
+      <Stack spacing={4} p={2} pb={4}>
+        {gameResult.map((res) => (
+          <GameResultContainer
+            key={res.home}
+            teamHome={res.home}
+            scoreHome={res.homeScore}
+            teamAway={res.away}
+            scoreAway={res.awayScore}
+          />
+        ))}
       </Stack>
     </Container>
   )

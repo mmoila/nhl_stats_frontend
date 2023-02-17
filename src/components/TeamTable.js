@@ -90,8 +90,8 @@ export default function TeamTable() {
           {teams
             .slice()
             .sort(getComparator(order, orderBy))
-            .map((row) => (
-              <TableRow key={row.name}>
+            .map((team) => (
+              <TableRow key={team.name}>
                 <TableCell size="small" sx={{ paddingLeft: 0 }}>
                   <Container
                     maxWidth="xs"
@@ -101,16 +101,16 @@ export default function TeamTable() {
                     }}
                   >
                     <img
-                      src={`https://assets.nhle.com/logos/nhl/svg/${row.abbreviation}_light.svg`}
+                      src={`https://assets.nhle.com/logos/nhl/svg/${team.abbreviation}_light.svg`}
                       width="50px"
                       height="auto"
                       alt="logo"
                     />
-                    {row.abbreviation}
+                    {team.abbreviation}
                   </Container>
                 </TableCell>
-                <TableCell>{row.city}</TableCell>
-                <TableCell>{row.name}</TableCell>
+                <TableCell>{team.city}</TableCell>
+                <TableCell>{team.name}</TableCell>
               </TableRow>
             ))}
         </TableBody>
