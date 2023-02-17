@@ -5,19 +5,21 @@ import TeamStatsTable from "./TeamStatsTable"
 import PlayerStatsTable from "./PlayerStatsTable"
 import { createPlayerRecordList, createTeamRecordList } from "../utils/helpers"
 import { getPlayerStandings, getTeamStandings } from "../utils/requests"
+import GameResultStack from "./GameResultStack"
 
 const FrontPage = () => {
   const teamStandingsData = useQuery("teamStandingsData", getTeamStandings)
   const playerStandigsData = useQuery("playerStandingsData", getPlayerStandings)
-  console.log(playerStandigsData)
 
-  const teamStats = teamStandingsData.isLoading
-    ? null
-    : createTeamRecordList(teamStandingsData.data)
+  const teamStats =
+    teamStandingsData.isLoading || teamStandingsData.isError
+      ? null
+      : createTeamRecordList(teamStandingsData.data)
 
-  const playerStats = playerStandigsData.isLoading
-    ? null
-    : createPlayerRecordList(playerStandigsData.data)
+  const playerStats =
+    playerStandigsData.isLoading || playerStandigsData.isError
+      ? null
+      : createPlayerRecordList(playerStandigsData.data)
 
   if (!teamStats || !playerStats) {
     return null
@@ -26,16 +28,8 @@ const FrontPage = () => {
   return (
     <Grid disableEqualOverflow container spacing={2}>
       <Grid item xs={12} md={8}>
-        <Paper
-          sx={{
-            height: 500,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "lightGrey",
-          }}
-        >
-          live results here...
+        <Paper component="div">
+          <GameResultStack />
         </Paper>
       </Grid>
       <Grid item md={4} sx={{ display: { xs: "none", md: "block" } }}>

@@ -26,3 +26,15 @@ export const getPlayerStandings = () => {
     .then((res) => res.data.data)
     .catch((error) => error)
 }
+
+export const getGameResults = () => {
+  let date = new Date()
+  date.setDate(date.getDate() - 1)
+  // eslint-disable-next-line prefer-destructuring
+  date = date.toISOString().split("T")[0]
+  console.log(date)
+  return axios
+    .get(`${statsApiUrl}/schedule?date=${date}`)
+    .then((res) => res.data.dates[0].games)
+    .catch((error) => error)
+}

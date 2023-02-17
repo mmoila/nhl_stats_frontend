@@ -32,3 +32,15 @@ export const createPlayerRecordList = (playerData) => {
 
   return playerRecords
 }
+
+export const createGameResultList = (gameData) => {
+  const gameResults = gameData.map((data) => ({
+    gameStatus: data.status.abstractGameState,
+    home: data.teams.home.team.name,
+    homeScore: data.teams.home.score,
+    away: data.teams.away.team.name,
+    awayScore: data.teams.away.score,
+  }))
+
+  return gameResults
+}

@@ -17,8 +17,11 @@ export default function TeamTable() {
   const [orderBy, setOrderBy] = useState("abbreviation")
 
   const teamData = useQuery("teamData", getTeams)
-  console.log(teamData)
-  const teams = teamData.isLoading ? null : createTeamList(teamData.data)
+
+  const teams =
+    teamData.isLoading || teamData.isError
+      ? null
+      : createTeamList(teamData.data)
 
   if (!teams) {
     return null
