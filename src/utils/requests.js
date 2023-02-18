@@ -3,6 +3,12 @@ import axios from "axios"
 const statsApiUrl = "https://statsapi.web.nhl.com/api/v1"
 const season = "20222023"
 
+export const getTeam = (teamID) =>
+  axios
+    .get(`${statsApiUrl}/teams/${teamID}`)
+    .then((res) => res.data.teams)
+    .catch((error) => error)
+
 export const getTeams = () =>
   axios
     .get(`${statsApiUrl}/teams`)
@@ -32,7 +38,7 @@ export const getGameResults = () => {
   date.setDate(date.getDate() - 1)
   // eslint-disable-next-line prefer-destructuring
   date = date.toISOString().split("T")[0]
-  console.log(date)
+
   return axios
     .get(`${statsApiUrl}/schedule?date=${date}`)
     .then((res) => res.data.dates[0].games)

@@ -12,6 +12,7 @@ export const createTeamRecordList = (teamData) => {
     .map((records) => records.teamRecords)
     .reduce((a, b) => [...a, ...b])
     .map((records) => ({
+      teamID: records.team.id,
       team: records.team.name,
       rank: parseInt(records.leagueRank, 10),
       points: records.points,
@@ -36,8 +37,10 @@ export const createPlayerRecordList = (playerData) => {
 export const createGameResultList = (gameData) => {
   const gameResults = gameData.map((data) => ({
     gameStatus: data.status.abstractGameState,
+    homeID: data.teams.home.team.id,
     home: data.teams.home.team.name,
     homeScore: data.teams.home.score,
+    awayID: data.teams.away.team.id,
     away: data.teams.away.team.name,
     awayScore: data.teams.away.score,
   }))

@@ -1,10 +1,4 @@
-import {
-  Stack,
-  Typography,
-  Container,
-  Box,
-  CircularProgress,
-} from "@mui/material"
+import { Stack, Container, Box, CircularProgress } from "@mui/material"
 import { useQuery } from "react-query"
 import GameResultContainer from "./GameResultContainer"
 import { getGameResults } from "../utils/requests"
@@ -30,24 +24,15 @@ const GameResultStack = () => {
   }
 
   return (
-    <Container>
-      <Typography
-        p={2}
-        variant="h6"
-        id="tableTitle"
-        component="div"
-        textAlign="center"
-      >
-        Game Results From Yesterday
-      </Typography>
+    <Container sx={{ maxWidth: { sm: "60%" } }}>
       <Stack spacing={4} p={2} pb={4}>
         {gameResult.map((res) => (
           <GameResultContainer
             key={res.home}
-            teamHome={res.home}
             scoreHome={res.homeScore}
-            teamAway={res.away}
             scoreAway={res.awayScore}
+            homeID={res.homeID}
+            awayID={res.awayID}
           />
         ))}
       </Stack>

@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2"
-import { Paper, Stack } from "@mui/material"
+import { Paper, Stack, Typography } from "@mui/material"
 import { useQuery } from "react-query"
 import TeamStatsTable from "./TeamStatsTable"
 import PlayerStatsTable from "./PlayerStatsTable"
@@ -29,6 +29,15 @@ const FrontPage = () => {
     <Grid disableEqualOverflow container spacing={2}>
       <Grid item xs={12} md={8}>
         <Paper component="div">
+          <Typography
+            p={2}
+            variant="h6"
+            id="tableTitle"
+            component="div"
+            textAlign="center"
+          >
+            Game Results From Yesterday
+          </Typography>
           <GameResultStack />
         </Paper>
       </Grid>
