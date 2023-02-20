@@ -1,4 +1,4 @@
-import { Stack, Container, Box, CircularProgress } from "@mui/material"
+import { Stack, Container, Box, CircularProgress, Divider } from "@mui/material"
 import { useQuery } from "react-query"
 import GameResultContainer from "./GameResultContainer"
 import { getGameResults } from "../utils/requests"
@@ -25,7 +25,7 @@ const GameResultStack = () => {
 
   return (
     <Container sx={{ maxWidth: { sm: "60%" } }}>
-      <Stack spacing={4} p={2} pb={4}>
+      <Stack spacing={4} p={2} pb={4} divider={<Divider />}>
         {gameResult.map((res) => (
           <GameResultContainer
             key={res.home}

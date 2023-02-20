@@ -4,7 +4,6 @@ import { useQuery } from "react-query"
 import { getTeam } from "../utils/requests"
 
 const GameResultContainer = ({ homeID, awayID, scoreAway, scoreHome }) => {
-  console.log(homeID)
   const homeTeamData = useQuery(["homeTeam", homeID], () => getTeam(homeID))
   const awayTeamData = useQuery(["awayTeam", awayID], () => getTeam(awayID))
 
