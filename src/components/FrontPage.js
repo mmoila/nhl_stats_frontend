@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2"
-import { Paper, Stack, Typography } from "@mui/material"
+import { Paper, Stack, Typography, Skeleton } from "@mui/material"
 import { useQuery } from "react-query"
 import TeamStatsTable from "./TeamStatsTable"
 import PlayerStatsTable from "./PlayerStatsTable"
@@ -21,10 +21,6 @@ const FrontPage = () => {
       ? null
       : createPlayerRecordList(playerStandigsData.data)
 
-  if (!teamStats || !playerStats) {
-    return null
-  }
-
   return (
     <Grid disableEqualOverflow container spacing={2}>
       <Grid item xs={12} md={8}>
@@ -43,15 +39,31 @@ const FrontPage = () => {
       </Grid>
       <Grid item md={4} sx={{ display: { xs: "none", md: "block" } }}>
         <Stack spacing={1}>
-          <TeamStatsTable header="Team standings" teams={teamStats} />
-          <PlayerStatsTable header="Player standings" players={playerStats} />
+          {teamStats ? (
+            <TeamStatsTable header="Team standings" teams={teamStats} />
+          ) : (
+            <Skeleton variant="rectangular" height={400} />
+          )}
+          {playerStats ? (
+            <PlayerStatsTable header="Player standings" players={playerStats} />
+          ) : (
+            <Skeleton variant="rectangular" height={400} />
+          )}
         </Stack>
       </Grid>
       <Grid item xs={6} sx={{ display: { md: "none" } }}>
-        <TeamStatsTable header="Team standings" teams={teamStats} />
+        {teamStats ? (
+          <TeamStatsTable header="Team standings" teams={teamStats} />
+        ) : (
+          <Skeleton variant="rectangular" height={400} />
+        )}
       </Grid>
       <Grid item xs={6} sx={{ display: { md: "none" } }}>
-        <PlayerStatsTable header="Player standings" players={playerStats} />
+        {playerStats ? (
+          <PlayerStatsTable header="Player standings" players={playerStats} />
+        ) : (
+          <Skeleton variant="rectangular" height={400} />
+        )}
       </Grid>
     </Grid>
   )

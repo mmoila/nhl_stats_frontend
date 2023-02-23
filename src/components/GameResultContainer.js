@@ -8,7 +8,7 @@ const GameResultContainer = ({ homeID, awayID, scoreAway, scoreHome }) => {
   const awayTeamData = useQuery(["awayTeam", awayID], () => getTeam(awayID))
 
   if (homeTeamData.isLoading || awayTeamData.isLoading) {
-    return <div>Loading...</div>
+    return null
   }
   if (homeTeamData.isError || awayTeamData.isError) {
     return <div>Error!</div>
