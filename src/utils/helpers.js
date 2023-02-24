@@ -29,6 +29,8 @@ export const createPlayerRecordList = (playerData) => {
     id: data.player.id,
     name: data.player.fullName,
     points: data.points,
+    goals: data.stats.goals,
+    assists: data.stats.assists,
   }))
 
   return playerRecords

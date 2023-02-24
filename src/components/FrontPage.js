@@ -51,14 +51,14 @@ const FrontPage = () => {
           )}
         </Stack>
       </Grid>
-      <Grid item xs={6} sx={{ display: { md: "none" } }}>
+      <Grid item xs={12} sm={6} sx={{ display: { md: "none" } }}>
         {teamStats ? (
           <TeamStatsTable header="Team standings" teams={teamStats} />
         ) : (
           <Skeleton variant="rectangular" height={400} />
         )}
       </Grid>
-      <Grid item xs={6} sx={{ display: { md: "none" } }}>
+      <Grid item xs={12} sm={6} sx={{ display: { md: "none" } }}>
         {playerStats ? (
           <PlayerStatsTable header="Player standings" players={playerStats} />
         ) : (

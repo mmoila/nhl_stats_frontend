@@ -39,6 +39,8 @@ export default function StatsTable({ header, players }) {
           <TableRow>
             <TableCell>Player</TableCell>
             <TableCell>Points</TableCell>
+            <TableCell>Goals</TableCell>
+            <TableCell>Assists</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +57,8 @@ export default function StatsTable({ header, players }) {
                 <TableRow key={key}>
                   <TableCell size="small">{row.name}</TableCell>
                   <TableCell>{row.points}</TableCell>
+                  <TableCell>{row.goals}</TableCell>
+                  <TableCell>{row.assists}</TableCell>
                 </TableRow>
               )
             })}
