@@ -9,7 +9,7 @@ export const getTeam = (teamID) =>
     .then((res) => res.data.teams)
     .catch((error) => error)
 
-export const getTeams = () =>
+export const getTeams = async () =>
   axios
     .get(`${statsApiUrl}/teams`)
     .then((res) => res.data.teams)
@@ -26,11 +26,7 @@ export const getPlayerStats = (playerID) =>
     .get(
       `${statsApiUrl}/people/${playerID}/stats?stats=statsSingleSeason&season=${season}`
     )
-    .then((res) => {
-      console.log(res.data)
-
-      return res.data.stats[0].splits[0].stat
-    })
+    .then((res) => res.data.stats[0].splits[0].stat)
     .catch((error) => error)
 
 export const getPlayerStandings = async () => {
@@ -48,14 +44,30 @@ export const getPlayerStandings = async () => {
   return Promise.all(playerStandings)
 }
 
-export const getGameResults = () => {
+export const getGameResults = async () => {
   let date = new Date()
   date.setDate(date.getDate() - 1)
   // eslint-disable-next-line prefer-destructuring
   date = date.toISOString().split("T")[0]
 
-  return axios
-    .get(`${statsApiUrl}/schedule?date=${date}`)
-    .then((res) => res.data.dates[0].games)
-    .catch((error) => error)
+  const resultData = await (
+    await axios.get(`${statsApiUrl}/schedule?date=${date}`)
+  ).data.dates[0].games
+
+  const gameResults = resultData.map(async (game) => ({
+    ...game,
+    teams: {
+      ...game.teams,
+      away: {
+        ...game.teams.away,
+        team: await getTeam(game.teams.away.team.id),
+      },
+      home: {
+        ...game.teams.home,
+        team: await getTeam(game.teams.home.team.id),
+      },
+    },
+  }))
+
+  return Promise.all(gameResults)
 }

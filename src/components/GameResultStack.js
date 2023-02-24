@@ -22,8 +22,8 @@ const GameResultStack = () => {
             key={res.home}
             scoreHome={res.homeScore}
             scoreAway={res.awayScore}
-            homeID={res.homeID}
-            awayID={res.awayID}
+            homeAbbreviation={res.homeAbbreviation}
+            awayAbbreviation={res.awayAbbreviation}
           />
         ))}
       </Stack>
