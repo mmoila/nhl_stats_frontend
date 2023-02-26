@@ -3,19 +3,13 @@ import { Paper, Stack, Typography, Skeleton } from "@mui/material"
 import { useQuery } from "react-query"
 import TeamStatsTable from "./TeamStatsTable"
 import PlayerStatsTable from "./PlayerStatsTable"
-import { createPlayerRecordList } from "../utils/helpers"
-import { getPlayerStandings } from "../utils/requests"
+import getPlayerStandings from "../utils/services/players"
 import GameResultStack from "./GameResultStack"
 import { getTeamStandings } from "../utils/services/teams"
 
 const FrontPage = () => {
   const teamStandings = useQuery("teamStandingsData", getTeamStandings)
-  const playerStandigsData = useQuery("playerStandingsData", getPlayerStandings)
-
-  const playerStats =
-    playerStandigsData.isLoading || playerStandigsData.isError
-      ? null
-      : createPlayerRecordList(playerStandigsData.data)
+  const playerStandings = useQuery("playerStandingsData", getPlayerStandings)
 
   return (
     <Grid disableEqualOverflow container spacing={2}>
@@ -43,10 +37,13 @@ const FrontPage = () => {
               teams={teamStandings.data}
             />
           )}
-          {playerStats ? (
-            <PlayerStatsTable header="Player standings" players={playerStats} />
-          ) : (
+          {playerStandings.isLoading ? (
             <Skeleton variant="rectangular" height={400} />
+          ) : (
+            <PlayerStatsTable
+              header="Player standings"
+              players={playerStandings.data}
+            />
           )}
         </Stack>
       </Grid>
@@ -58,10 +55,13 @@ const FrontPage = () => {
         )}
       </Grid>
       <Grid item xs={12} sm={6} sx={{ display: { md: "none" } }}>
-        {playerStats ? (
-          <PlayerStatsTable header="Player standings" players={playerStats} />
-        ) : (
+        {playerStandings.isLoading ? (
           <Skeleton variant="rectangular" height={400} />
+        ) : (
+          <PlayerStatsTable
+            header="Player standings"
+            players={playerStandings.data}
+          />
         )}
       </Grid>
     </Grid>

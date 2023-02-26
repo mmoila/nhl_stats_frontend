@@ -36,12 +36,7 @@ export const getPlayerStandings = async () => {
       : `https://cekvpxev6a.execute-api.eu-north-1.amazonaws.com/player-stats`
 
   const playerData = await axios.get(url)
-  const playerStandings = playerData.data.data.map(async (data) => ({
-    ...data,
-    stats: await getPlayerStats(data.player.id),
-  }))
-
-  return Promise.all(playerStandings)
+  return playerData.data.data
 }
 
 export const getGameResults = async () => {
