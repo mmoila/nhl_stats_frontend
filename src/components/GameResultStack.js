@@ -1,4 +1,4 @@
-import { Stack, Container, Divider, Skeleton } from "@mui/material"
+import { Stack, Container, Divider, Skeleton, Alert } from "@mui/material"
 import { useQuery } from "react-query"
 import GameResultContainer from "./GameResultContainer"
 import { getGameResults } from "../utils/requests"
@@ -8,8 +8,13 @@ const GameResultStack = () => {
   const result = useQuery("gameResults", getGameResults)
 
   if (result.isError) {
-    return <div>Error occurred</div>
+    return (
+      <Alert severity="error" sx={{ height: 400 }}>
+        Error fetching data
+      </Alert>
+    )
   }
+
   const gameResult = result.data ? createGameResultList(result.data) : null
 
   return !gameResult ? (
