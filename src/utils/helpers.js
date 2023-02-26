@@ -16,8 +16,9 @@ export const createTeamRecordList = (teamData) => {
       team: records.team.name,
       rank: parseInt(records.leagueRank, 10),
       points: records.points,
-      wins: records.leagueRank.wins,
+      wins: records.leagueRecord.wins,
       losses: records.leagueRecord.losses,
+      overtime: records.leagueRecord.ot,
       gamesPlayed: records.gamesPlayed,
     }))
 

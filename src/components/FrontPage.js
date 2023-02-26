@@ -3,18 +3,14 @@ import { Paper, Stack, Typography, Skeleton } from "@mui/material"
 import { useQuery } from "react-query"
 import TeamStatsTable from "./TeamStatsTable"
 import PlayerStatsTable from "./PlayerStatsTable"
-import { createPlayerRecordList, createTeamRecordList } from "../utils/helpers"
-import { getPlayerStandings, getTeamStandings } from "../utils/requests"
+import { createPlayerRecordList } from "../utils/helpers"
+import { getPlayerStandings } from "../utils/requests"
 import GameResultStack from "./GameResultStack"
+import { getTeamStandings } from "../utils/services/teams"
 
 const FrontPage = () => {
-  const teamStandingsData = useQuery("teamStandingsData", getTeamStandings)
+  const teamStandings = useQuery("teamStandingsData", getTeamStandings)
   const playerStandigsData = useQuery("playerStandingsData", getPlayerStandings)
-
-  const teamStats =
-    teamStandingsData.isLoading || teamStandingsData.isError
-      ? null
-      : createTeamRecordList(teamStandingsData.data)
 
   const playerStats =
     playerStandigsData.isLoading || playerStandigsData.isError
@@ -39,10 +35,13 @@ const FrontPage = () => {
       </Grid>
       <Grid item md={4} sx={{ display: { xs: "none", md: "block" } }}>
         <Stack spacing={1}>
-          {teamStats ? (
-            <TeamStatsTable header="Team standings" teams={teamStats} />
-          ) : (
+          {teamStandings.isLoading ? (
             <Skeleton variant="rectangular" height={400} />
+          ) : (
+            <TeamStatsTable
+              header="Team standings"
+              teams={teamStandings.data}
+            />
           )}
           {playerStats ? (
             <PlayerStatsTable header="Player standings" players={playerStats} />
@@ -52,10 +51,10 @@ const FrontPage = () => {
         </Stack>
       </Grid>
       <Grid item xs={12} sm={6} sx={{ display: { md: "none" } }}>
-        {teamStats ? (
-          <TeamStatsTable header="Team standings" teams={teamStats} />
-        ) : (
+        {teamStandings.isLoading ? (
           <Skeleton variant="rectangular" height={400} />
+        ) : (
+          <TeamStatsTable header="Team standings" teams={teamStandings.data} />
         )}
       </Grid>
       <Grid item xs={12} sm={6} sx={{ display: { md: "none" } }}>

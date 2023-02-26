@@ -38,7 +38,10 @@ export default function StatsTable({ header, teams }) {
         <TableHead>
           <TableRow>
             <TableCell>Team</TableCell>
-            <TableCell>Points</TableCell>
+            <TableCell>P</TableCell>
+            <TableCell>W</TableCell>
+            <TableCell>L</TableCell>
+            <TableCell>OT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,8 +56,18 @@ export default function StatsTable({ header, teams }) {
               }
               return (
                 <TableRow key={key}>
-                  <TableCell size="small">{row.team}</TableCell>
+                  <TableCell>
+                    <img
+                      src={`https://assets.nhle.com/logos/nhl/svg/${row.abbreviation}_light.svg`}
+                      width="50px"
+                      height="auto"
+                      alt={row.team}
+                    />
+                  </TableCell>
                   <TableCell>{row.points}</TableCell>
+                  <TableCell>{row.wins}</TableCell>
+                  <TableCell>{row.losses}</TableCell>
+                  <TableCell>{row.overtime}</TableCell>
                 </TableRow>
               )
             })}
