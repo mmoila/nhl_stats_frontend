@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar"
 import Button from "@mui/material/Button"
 import IconButton from "@mui/material/IconButton"
 import HomeIcon from "@mui/icons-material/Home"
+import LoginPopover from "./LoginPopover"
 
 export default function NavBar() {
   return (
@@ -28,7 +29,7 @@ export default function NavBar() {
               Teams
             </Button>
           </Box>
-          <Button color="inherit">Login</Button>
+          <LoginPopover />
         </Toolbar>
       </AppBar>
     </Box>
