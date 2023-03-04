@@ -108,16 +108,27 @@ const LoginPopover = () => {
             <Controller
               name="password"
               control={control}
-              rules={{ minLength: 8, maxLength: 25, required: "true" }}
+              rules={{
+                minLength: {
+                  value: 8,
+                  message: "Password must have min 8 characters",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "Password can contain max 25 characters",
+                },
+                required: "true",
+                pattern: {
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)[\w\W]{8,}$/,
+                  message:
+                    "Password must contain at least one upper and lower case character, one number and one special character",
+                },
+              }}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   error={!!errors.password}
-                  helperText={
-                    errors.password
-                      ? "Password must be between 8 and 25 characters"
-                      : ""
-                  }
+                  helperText={errors.password ? errors.password.message : ""}
                   placeholder="password"
                   onChange={field.onChange}
                   type="password"
