@@ -34,18 +34,31 @@ export default function StatsTable({ header, teams }) {
   }
 
   return (
-    <TableContainer component={Paper} sx={{ maxWidth: "sm", mx: "auto" }}>
+    <TableContainer component={Paper} sx={{ maxWidth: "sm" }}>
       <Typography p={2} variant="h6" id="tableTitle" component="div">
         {header}
       </Typography>
-      <Table sx={{ maxWidth: "sm" }} aria-label="simple table" size="small">
+      <Table aria-label="simple table" size="small">
         <TableHead>
-          <TableRow>
-            <TableCell>Team</TableCell>
-            <TableCell>P</TableCell>
-            <TableCell>W</TableCell>
-            <TableCell>L</TableCell>
-            <TableCell>OT</TableCell>
+          <TableRow sx={{ "& > *": { padding: 0.35 } }}>
+            <TableCell padding="none" align="center">
+              Rank
+            </TableCell>
+            <TableCell padding="none" align="center">
+              Team
+            </TableCell>
+            <TableCell padding="none" align="center">
+              P
+            </TableCell>
+            <TableCell padding="none" align="center">
+              W
+            </TableCell>
+            <TableCell padding="none" align="center">
+              L
+            </TableCell>
+            <TableCell padding="none" align="center">
+              OT
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -60,18 +73,30 @@ export default function StatsTable({ header, teams }) {
               }
               return (
                 <TableRow key={key}>
-                  <TableCell>
+                  <TableCell sx={{ paddingX: 0.25 }} align="center">
+                    {row.rank}
+                  </TableCell>
+                  <TableCell sx={{ paddingX: 0.25 }} align="center">
                     <img
                       src={`https://assets.nhle.com/logos/nhl/svg/${row.abbreviation}_light.svg`}
                       width="50px"
                       height="auto"
                       alt={row.team}
+                      align="center"
                     />
                   </TableCell>
-                  <TableCell>{row.points}</TableCell>
-                  <TableCell>{row.wins}</TableCell>
-                  <TableCell>{row.losses}</TableCell>
-                  <TableCell>{row.overtime}</TableCell>
+                  <TableCell sx={{ paddingX: 0.75 }} align="center">
+                    {row.points}
+                  </TableCell>
+                  <TableCell sx={{ paddingX: 0.75 }} align="center">
+                    {row.wins}
+                  </TableCell>
+                  <TableCell sx={{ paddingX: 0.75 }} align="center">
+                    {row.losses}
+                  </TableCell>
+                  <TableCell sx={{ paddingX: 0.75 }} align="center">
+                    {row.overtime}
+                  </TableCell>
                 </TableRow>
               )
             })}
