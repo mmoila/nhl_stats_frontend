@@ -64,7 +64,7 @@ export default function StatsTable({ header, teams }) {
         <TableBody>
           {teams
             .slice()
-            .sort(getComparator("desc", "points"))
+            .sort(getComparator("asc", "rank"))
             .slice(0, 10)
             .map((row) => {
               const key = row.team ? row.team.replaceAll(" ", "") : null
