@@ -39,30 +39,39 @@ export const getPlayerStandings = async () => {
   return playerData.data.data
 }
 
-export const getGameResults = async () => {
+const getDate = (dateOffset = 0) => {
   let date = new Date()
-  date.setDate(date.getDate() - 1)
+  date.setDate(date.getDate() + dateOffset)
   // eslint-disable-next-line prefer-destructuring
   date = date.toISOString().split("T")[0]
+  return date
+}
+
+const teamIdsToGameResults = (resultData) =>
+  Promise.all(
+    resultData.map(async (game) => ({
+      ...game,
+      teams: {
+        ...game.teams,
+        away: {
+          ...game.teams.away,
+          team: await getTeam(game.teams.away.team.id),
+        },
+        home: {
+          ...game.teams.home,
+          team: await getTeam(game.teams.home.team.id),
+        },
+      },
+    }))
+  )
+
+export const getGameResults = async () => {
+  const date = getDate(-1)
 
   const resultData = await (
     await axios.get(`${statsApiUrl}/schedule?date=${date}`)
   ).data.dates[0].games
 
-  const gameResults = resultData.map(async (game) => ({
-    ...game,
-    teams: {
-      ...game.teams,
-      away: {
-        ...game.teams.away,
-        team: await getTeam(game.teams.away.team.id),
-      },
-      home: {
-        ...game.teams.home,
-        team: await getTeam(game.teams.home.team.id),
-      },
-    },
-  }))
-
-  return Promise.all(gameResults)
+  const gameResults = await teamIdsToGameResults(resultData)
+  return gameResults
 }
