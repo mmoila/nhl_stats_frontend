@@ -54,9 +54,7 @@ export default function StatsTable({ header, players }) {
             .slice(0, 10)
             .map((row) => {
               const key = row.name ? row.name.replaceAll(" ", "") : null
-              if (!key) {
-                console.log(row)
-              }
+
               return (
                 <TableRow key={key}>
                   <TableCell size="small">{row.name}</TableCell>

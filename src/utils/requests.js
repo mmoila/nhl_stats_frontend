@@ -68,10 +68,14 @@ const teamIdsToGameResults = (resultData) =>
 export const getGameResults = async () => {
   const date = getDate(-1)
 
-  const resultData = await (
-    await axios.get(`${statsApiUrl}/schedule?date=${date}`)
-  ).data.dates[0].games
+  try {
+    const resultData = await (
+      await axios.get(`${statsApiUrl}/schedule?date=${date}`)
+    ).data.dates[0].games
 
-  const gameResults = await teamIdsToGameResults(resultData)
-  return gameResults
+    const gameResults = await teamIdsToGameResults(resultData)
+    return gameResults
+  } catch (error) {
+    return new Error("Unable to get game schedule data")
+  }
 }

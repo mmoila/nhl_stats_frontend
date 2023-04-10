@@ -8,7 +8,12 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { Typography, Alert } from "@mui/material"
 
-export default function StatsTable({ header, teams }) {
+export default function StatsTable({
+  header,
+  teams,
+  totalRank = true,
+  elevation = 1,
+}) {
   if (!teams) {
     return (
       <Alert severity="error" sx={{ height: 400 }}>
@@ -34,7 +39,11 @@ export default function StatsTable({ header, teams }) {
   }
 
   return (
-    <TableContainer component={Paper} sx={{ maxWidth: "sm" }}>
+    <TableContainer
+      component={Paper}
+      elevation={elevation}
+      sx={{ maxWidth: "sm" }}
+    >
       <Typography p={2} variant="h6" id="tableTitle" component="div">
         {header}
       </Typography>
@@ -74,7 +83,7 @@ export default function StatsTable({ header, teams }) {
               return (
                 <TableRow key={key}>
                   <TableCell sx={{ paddingX: 0.25 }} align="center">
-                    {row.rank}
+                    {totalRank ? row.rank : row.divisionRank}
                   </TableCell>
                   <TableCell sx={{ paddingX: 0.25 }} align="center">
                     <img

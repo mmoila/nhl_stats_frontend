@@ -7,14 +7,19 @@ export const createTeamList = (teamData) => {
   return teams
 }
 
-export const createTeamRecordList = (teamData) => {
+export const createTeamRecordList = (
+  teamData,
+  conferenceIds = [15, 16, 17, 18]
+) => {
   const teamRecords = teamData.records
+    .filter((records) => conferenceIds.includes(records.division.id))
     .map((records) => records.teamRecords)
     .reduce((a, b) => [...a, ...b])
     .map((records) => ({
       teamID: records.team.id,
       team: records.team.name,
       rank: parseInt(records.leagueRank, 10),
+      divisionRank: parseInt(records.divisionRank, 10),
       points: records.points,
       wins: records.leagueRecord.wins,
       losses: records.leagueRecord.losses,
