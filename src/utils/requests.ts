@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const statsApiUrl = "https://statsapi.web.nhl.com/api/v1"
-const season = "20222023"
+const season = process.env.NHL_SEASON ?? "20232024"
 
 export const getTeam = (teamID) =>
   axios
@@ -40,11 +40,10 @@ export const getPlayerStandings = async () => {
 }
 
 const getDate = (dateOffset = 0) => {
-  let date = new Date()
+  const date = new Date()
   date.setDate(date.getDate() + dateOffset)
   // eslint-disable-next-line prefer-destructuring
-  date = date.toISOString().split("T")[0]
-  return date
+  return date.toISOString().split("T")[0]
 }
 
 const teamIdsToGameResults = (resultData) =>
