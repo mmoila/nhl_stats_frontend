@@ -76,6 +76,6 @@ export const getGameResults = async () => {
     const gameResults = await teamIdsToGameResults(resultData)
     return gameResults
   } catch (error) {
-    return new Error("Unable to get game schedule data")
+    throw new Error("Unable to get game schedule data")
   }
 }
