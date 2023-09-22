@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const statsApiUrl = "https://statsapi.web.nhl.com/api/v1"
-const season = "20222023"
+const season = process.env?.NHL_SEASON ?? "20232024"
 
 export const getTeam = (teamID) =>
   axios
